@@ -1,2 +1,3 @@
-# SMS-spam-classifier
-Project of classifying SMS wheater it is SPAM or HAM.
+![](https://i.imgur.com/2rQvXIB.png)
+
+## UNDER CONSTRUCTION
