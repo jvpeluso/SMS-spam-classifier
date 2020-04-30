@@ -16,7 +16,7 @@ Spam can fill your inbox with no requested messages and sometimes is not only ad
 
 Keep the inbox without unwanted messages, avoiding unsolicited ads or messages that include threats that can either infect your phone or steal your private data.
 
-An application capable of filtering incoming SMS, discarding those that are spam, would avoid more than one trouble to the users. Using machine learning algorithms and techniques like **_NLP_**, a model can be developed for this purpose. 
+An application capable of filtering incoming SMS, discarding those that are spam, would avoid more than one trouble to the users. Using machine learning algorithms and techniques like [**_NLP_**](https://en.wikipedia.org/wiki/Natural_language_processing) , a model can be developed for this purpose. 
 
 A critical aspect is that non-spam SMS reach the inbox always, because a non-spam SMS (ham) tagged as spam, will create suspicion in the process, unlike the occasional SMS spam that eventually reaches the inbox.
 
@@ -137,7 +137,7 @@ With the best hyperparameters found for each model, we fitted the models with th
 ![](https://i.imgur.com/tlpTM9V.png)
 ![](https://i.imgur.com/xbfiQau.png)
 
-The results match with those obtained in the Cross-validation process.**_Logistic Regression_** is again the best model, obtaining a bit higher accuracy score, although the Precision score falls, the F1 score rise, which we interpret the model generalizes better.
+The results match with those obtained in the Cross-validation process.**_Logistic Regression_** is again the best model, obtaining a bit higher accuracy score, although the *Precision* score decreases, the *Recall* and *F1* scores increase, which we interpret the model generalizes better.
 
 We see that the correct classification of the non-spam SMS is a **_99.26_**%! Which is what we wanted to achieve in the first place. Also, only 15.82% of spam SMS was classified erroneously as non-spam. The top-15 most important features of the model are:
 
