@@ -92,3 +92,46 @@ Then, we create a BoW ([bag-of-words](https://en.wikipedia.org/wiki/Bag-of-words
 In general, the correlation between the spam label and the features is weak, being **0.43** the higher coefficient (*smsLen*). Among the other features is relevant and logic the high correlation between *smsWords* and *smsLen*, as more words present in the text, longer the SMS will be. 
 
 ![](https://i.imgur.com/LeJMIvM.png)
+
+## 5. Model development
+
+### Train/Test split and baseline
+
+The data is split into a 7:3 train/test ratio. Then, only the basic features created previously for the EDA phase, we create a basic Logistic Regression model and check its performance with a cross-validation score process, just to know where we stand before developing more tunned models. The results were the following:
+
+Metric | Score 
+--- | --- 
+Accuracy | 0.8927
+Precision | 0.6308
+Recall | 0.3631
+F1 | 0.4608
+
+Accuracy will always be high in an unbalanced dataset, but the results of **_Precision_**, **_Recall_**, and consequently, of **_F1_** scores reflect that the model doesn't handle the minority class (spam) properly. Intending, we need to add more features to feed the model. 
+
+### NLP features creation, model selection and hyperparameter tunning
+
+First, we split the original dataset (only SMS corpus and spam flag) into the same proportions we did before, and create a pipeline with the following steps:
+1. Creation of the matrix of features (basic and NLP) with FeatureUnion, the internal steps are:
+
+  * Creation of basic features.
+  * Creation of the CountVectorizer matrix, preprocessing the text (lowercase, stopwords, etc.) and limiting the number of features to 2500.
+  * Creation of the TF-IDF matrix, preprocessing the text (lowercase, stopwords, etc.) and limiting the number of features to 2500.
+  
+2. Standardize the data with the StandardScaler method.
+3. Tune the model hyperparameters with the GridSearchCV method.
+
+The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. The results of the GridSearchCV process were:
+
+Classifier | Accuracy | Precision | Recall | F1 score | Best parameters 
+--- | --- | --- | --- | --- | --- 
+Multinomial NB | 0.9547 | 0.7853 | 0.8906 | 0.8323 | alpha: 0.003
+**_Logistic Regression_** | **_0.9735_** | **_0.9767_** | **_0.8096_** | **_0.8846_** | **_C : 0.1_**
+Linear SVM | 0.9682 | 0.9279 | 0.8118 | 0.8655 | C : 0.05 - gamma : 0.01
+
+**_Logistic Regression_** got the best metrics, with accuracy and precision above 0.97, which means almost all non-spam SMS were tagged correctly., and an F1 score of 0.88, also the highest among the other models.
+
+### Model validation
+
+With the best hyperparameters found for each model, we fitted the models with the train data, and predict with the test data, to validate the effectiveness with the unseen data. In the confusion matrices, we can see the results:
+
+![](https://i.imgur.com/MAWRlTx.png)
