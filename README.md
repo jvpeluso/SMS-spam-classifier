@@ -132,6 +132,21 @@ Linear SVM | 0.9682 | 0.9279 | 0.8118 | 0.8655 | C : 0.05 - gamma : 0.01
 
 ### Model validation
 
-With the best hyperparameters found for each model, we fitted the models with the train data, and predict with the test data, to validate the effectiveness with the unseen data. In the confusion matrices, we can see the results:
+With the best hyperparameters found for each model, we fitted the models with the train data, and predict with the test data to validate the effectiveness of the models. In the confusion matrices, we can see the results:
 
-![](https://i.imgur.com/MAWRlTx.png)
+![](https://i.imgur.com/tlpTM9V.png)
+![](https://i.imgur.com/xbfiQau.png)
+
+The results match with those obtained in the Cross-validation process.**_Logistic Regression_** is again the best model, obtaining a bit higher accuracy score, although the Precision score falls, the F1 score rise, which we interpret the model generalizes better.
+
+We see that the correct classification of the non-spam SMS is a **_99.26_**%! Which is what we wanted to achieve in the first place. Also, only 15.82% of spam SMS was classified erroneously as non-spam. The top-15 most important features of the model are:
+
+![](https://i.imgur.com/AO71cOX.png)
+
+Oddly enough, the most important feature of the model is a basic statistic calculated over the SMS text (*smsWordLen*), and that 3 out of 5 basic statistics features are in the top-15, proving that sometimes the simpler, the better. Note too, that 11 features are TF-IDF weights and only 1 of the Count Vectorizer bag-of-words.
+
+## 6. Conclusion
+
+We have shown that by using NLP techniques and calculating basic text statistics, we can develop a classifier to filter incoming SMS, avoiding ad or threatening messages in the inbox. Of course, the model performance can be improved, especially labeling the spam SMS.
+
+Perhaps using a more advanced NLP technique like [word embedding](https://en.wikipedia.org/wiki/Word_embedding) and developing a deep learning algorithm, the results would improve considerably, bearing in mind the increase in computational cost when training the model, and its complexity when explaining the results to a non-technical audience.
