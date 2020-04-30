@@ -30,7 +30,7 @@ The dataset has 5571 records (SMS) with no missing or NaN values in the flag or 
 
 To simplify the analysis and modeling process, we've merged the text of the 4 columns with the text of the SMS. Finally, we change the flag **_spam/ham_** flag to **_0/1_** values. 
 
-![](https://i.imgur.com/mHm47JA.png)
+![](https://i.imgur.com/aDZXe48.png)
 
 ## 3. Descriptive statistics
 
@@ -65,3 +65,30 @@ All features have upper range outliers (the other box plots can be seen in the n
 Even though they are actual records, they influence the group statistics and the analysis we can make of those results. So, for the EDA we'll remove those rows to get a more accurate insight of the data.
 
 ## 4. Exploratory data analysis.
+
+### Features statistics per target label
+
+Once we've removed the outliers when we calculate the mean and the STD per label, we see important differences in the data. For example, a non-spam SMS is **_66_** characters long on average, while the mean for spam SMS is more than *twice*, reaching a length mean of **_136_**. 
+
+In the KDE plot, we can see graphically how the density differs. In the notebook, you can see the plot of the other features. 
+
+![](https://i.imgur.com/IRwwQb7.png)
+
+### Frequent words distribution per target label
+
+First, we normalize the SMS corpus applying the following actions:
+
+* Update to lowercase all words.
+* Remove all punctuation characters.
+* Remove [stopwords](https://en.wikipedia.org/wiki/Stop_words).
+* Word [lemmatisation](https://en.wikipedia.org/wiki/Lemmatisation).
+
+Then, we create a BoW ([bag-of-words](https://en.wikipedia.org/wiki/Bag-of-words_model)) matrices per target label to see which words are the most frequent in each case. In the SMS labeled as spam, we see words we'd expect in commercial or phishing messages like *free*, *reply*, *prize*, and *win*. The most frequent word chart for non-spam SMS can be seen in the notebook.
+
+![](https://i.imgur.com/cPnBwZR.png)
+
+### Correlated features analysis
+
+In general, the correlation between the spam label and the features is weak, being **0.43** the higher coefficient (*smsLen*). Among the other features is relevant and logic the high correlation between *smsWords* and *smsLen*, as more words present in the text, longer the SMS will be. 
+
+![](https://i.imgur.com/LeJMIvM.png)
