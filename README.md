@@ -120,7 +120,7 @@ First, we split the original dataset (only SMS corpus and spam flag) into the sa
 2. Standardize the data with the StandardScaler method.
 3. Tune the model hyperparameters with the GridSearchCV method.
 
-The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. To tune the hyperparameters we've used the GridSearchCV process, the results of the GridSearchCV process were:
+The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. The results of the whole process were:
 
 Classifier | Accuracy | Precision | Recall | F1 score | Best parameters 
 --- | --- | --- | --- | --- | --- 
