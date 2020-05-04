@@ -137,7 +137,7 @@ With the best hyperparameters found for each model, we fitted the models with th
 ![](https://i.imgur.com/tlpTM9V.png)
 ![](https://i.imgur.com/xbfiQau.png)
 
-The results match with those obtained in the Cross-validation process.**_Logistic Regression_** is again the best model, obtaining a bit higher accuracy score, although the *Precision* score decreases, the *Recall* and *F1* scores increase, which we interpret the model generalizes better.
+The results match with those obtained in the Cross-validation process. **_Logistic Regression_** is again the best model, obtaining a bit higher accuracy score, although the *Precision* score decreases, the *Recall* and *F1* scores increase, which we interpret the model generalizes better.
 
 We see that the correct classification of the non-spam SMS is a **_99.26_**%! Which is what we wanted to achieve in the first place. Also, only 15.82% of spam SMS was classified erroneously as non-spam. 
 
