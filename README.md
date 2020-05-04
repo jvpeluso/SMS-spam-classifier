@@ -97,7 +97,7 @@ In general, the correlation between the spam label and the features is weak, bei
 
 ### Train/Test split and baseline
 
-The data is split into a 7:3 train/test ratio. Then, only the basic features created previously for the EDA phase, we create a basic Logistic Regression model and check its performance with a cross-validation score process, just to know where we stand before developing more tunned models. The results were the following:
+The data is split into a 7:3 train/test ratio. Then, only the basic features created previously for the EDA phase, we create a basic Logistic Regression model and check its performance with a cross-validation score process, just to know where we stand before developing more tuned models. The results were the following:
 
 Metric | Score 
 --- | --- 
@@ -108,7 +108,7 @@ F1 | 0.4608
 
 Accuracy will always be high in an unbalanced dataset, but the results of **_Precision_**, **_Recall_**, and consequently, of **_F1_** scores reflect that the model doesn't handle the minority class (spam) properly. Intending, we need to add more features to feed the model. 
 
-### NLP features creation, model selection and hyperparameter tunning
+### NLP features creation, model selection and hyperparameter tuning
 
 First, we split the original dataset (only SMS corpus and spam flag) into the same proportions we did before, and create a pipeline with the following steps:
 1. Creation of the matrix of features (basic and NLP) with FeatureUnion, the internal steps are:
@@ -120,7 +120,7 @@ First, we split the original dataset (only SMS corpus and spam flag) into the sa
 2. Standardize the data with the StandardScaler method.
 3. Tune the model hyperparameters with the GridSearchCV method.
 
-The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. The results of the GridSearchCV process were:
+The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. To tune the hyperparameters we've used the GridSearchCV process, the results of the GridSearchCV process were:
 
 Classifier | Accuracy | Precision | Recall | F1 score | Best parameters 
 --- | --- | --- | --- | --- | --- 
@@ -139,11 +139,15 @@ With the best hyperparameters found for each model, we fitted the models with th
 
 The results match with those obtained in the Cross-validation process.**_Logistic Regression_** is again the best model, obtaining a bit higher accuracy score, although the *Precision* score decreases, the *Recall* and *F1* scores increase, which we interpret the model generalizes better.
 
-We see that the correct classification of the non-spam SMS is a **_99.26_**%! Which is what we wanted to achieve in the first place. Also, only 15.82% of spam SMS was classified erroneously as non-spam. The top-15 most important features of the model are:
+We see that the correct classification of the non-spam SMS is a **_99.26_**%! Which is what we wanted to achieve in the first place. Also, only 15.82% of spam SMS was classified erroneously as non-spam. 
+
+### Feature importance and predictions
+
+The top-15 most important features of the model are:
 
 ![](https://i.imgur.com/AO71cOX.png)
 
-Oddly enough, the most important feature of the model is a basic statistic calculated over the SMS text (*smsWordLen*), and that 3 out of 5 basic statistics features are in the top-15, proving that sometimes the simpler, the better. Note too, that 11 features are TF-IDF weights and only 1 of the Count Vectorizer bag-of-words.
+Oddly enough, the most important feature of the model is a basic statistic calculated over the SMS text (*smsWordLen*), and that 3 out of 5 basic statistics features are in the top-15, proving that sometimes the simpler, the better. Note too, that 11 features are TF-IDF weights and only 1 of the Count Vectorizer bag-of-words. The predictions were exported to an excel file.
 
 ## 6. Conclusion
 
