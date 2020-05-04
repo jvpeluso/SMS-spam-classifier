@@ -198,7 +198,7 @@
 	plotBarText(self, df, fig, title, xLabel, xTicks, xLabelFS = 10,
                 xTicksFS = 12, plotC = 'b', barW = 0.65, barTxtFS = 10):
         
-        Function that draws a tunned bar plot with text above the bars.
+        Function that draws a tuned bar plot with text above the bars.
 	
 		Arguments
 		---------
@@ -266,7 +266,7 @@
 	plotBarH(self, X, y, fig, title, width, nType = '', symbol = '', 
              fontS = 10, plotC = 'b', sep = [1,2]):
         
-        Function that draw a tunned horizontal bar plot with text on the bars
+        Function that draw a tuned horizontal bar plot with text on the bars
 		
 		Arguments
 		---------
@@ -337,7 +337,7 @@
 	plotFeatImp(self, X, Y, fig, title, xLabel, xLabelFS = 10, rot = 45,
                 xTicksFS = 11, plotC = 'b', barW = 0.9, barTxtFS = 11):
 				
-	Function that draws a tunned bar plot for the feature importances.
+	Function that draws a tuned bar plot for the feature importances.
 		
 		Arguments
 		---------
