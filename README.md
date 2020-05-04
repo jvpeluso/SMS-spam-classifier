@@ -128,7 +128,7 @@ Multinomial NB | 0.9547 | 0.7853 | 0.8906 | 0.8323 | alpha: 0.003
 **_Logistic Regression_** | **_0.9735_** | **_0.9767_** | **_0.8096_** | **_0.8846_** | **_C : 0.1_**
 Linear SVM | 0.9682 | 0.9279 | 0.8118 | 0.8655 | C : 0.05 - gamma : 0.01
 
-**_Logistic Regression_** got the best metrics, with accuracy and precision above 0.97, which means almost all non-spam SMS were tagged correctly., and an F1 score of 0.88, also the highest among the other models.
+**_Logistic Regression_** got the best metrics, with accuracy and precision above 0.97, which means almost all non-spam SMS were tagged correctly, and an F1 score of 0.88, also the highest among the other models.
 
 ### Model validation
 
