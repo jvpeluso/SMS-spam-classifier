@@ -120,7 +120,7 @@ First, we split the original dataset (only SMS corpus and spam flag) into the sa
 2. Standardize the data with the StandardScaler method.
 3. Tune the model hyperparameters with the GridSearchCV method.
 
-The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. To tune the hyperparameters we've used the GridSearchCV process, the results of the GridSearchCV process were:
+The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. The results of the whole process were:
 
 Classifier | Accuracy | Precision | Recall | F1 score | Best parameters 
 --- | --- | --- | --- | --- | --- 
@@ -128,7 +128,7 @@ Multinomial NB | 0.9547 | 0.7853 | 0.8906 | 0.8323 | alpha: 0.003
 **_Logistic Regression_** | **_0.9735_** | **_0.9767_** | **_0.8096_** | **_0.8846_** | **_C : 0.1_**
 Linear SVM | 0.9682 | 0.9279 | 0.8118 | 0.8655 | C : 0.05 - gamma : 0.01
 
-**_Logistic Regression_** got the best metrics, with accuracy and precision above 0.97, which means almost all non-spam SMS were tagged correctly., and an F1 score of 0.88, also the highest among the other models.
+**_Logistic Regression_** got the best metrics, with accuracy and precision above 0.97, which means almost all non-spam SMS were tagged correctly, and an F1 score of 0.88, also the highest among the other models.
 
 ### Model validation
 
@@ -137,7 +137,7 @@ With the best hyperparameters found for each model, we fitted the models with th
 ![](https://i.imgur.com/tlpTM9V.png)
 ![](https://i.imgur.com/xbfiQau.png)
 
-The results match with those obtained in the Cross-validation process.**_Logistic Regression_** is again the best model, obtaining a bit higher accuracy score, although the *Precision* score decreases, the *Recall* and *F1* scores increase, which we interpret the model generalizes better.
+The results match with those obtained in the Cross-validation process. **_Logistic Regression_** is again the best model, obtaining a bit higher accuracy score, although the *Precision* score decreases, the *Recall* and *F1* scores increase, which we interpret the model generalizes better.
 
 We see that the correct classification of the non-spam SMS is a **_99.26_**%! Which is what we wanted to achieve in the first place. Also, only 15.82% of spam SMS was classified erroneously as non-spam. 
 
