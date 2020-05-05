@@ -16,7 +16,7 @@ Spam can fill your inbox with no requested messages and sometimes is not only ad
 
 Keep the inbox without unwanted messages, avoiding unsolicited ads or messages that include threats that can either infect your phone or steal your private data.
 
-An application capable of filtering incoming SMS, discarding those that are spam, would avoid more than one trouble to the users. Using machine learning algorithms and techniques like [**_NLP_**](https://en.wikipedia.org/wiki/Natural_language_processing) , a model can be developed for this purpose. 
+An application capable of filtering incoming SMS, discarding those that are spam, would avoid more than one trouble to the users. Using machine learning algorithms and techniques like [**_NLP_**](https://en.wikipedia.org/wiki/Natural_language_processing), a model can be developed for this purpose. 
 
 A critical aspect is that non-spam SMS reach the inbox always, because a non-spam SMS (ham) tagged as spam, will create suspicion in the process, unlike the occasional SMS spam that eventually reaches the inbox.
 
@@ -97,7 +97,7 @@ In general, the correlation between the spam label and the features is weak, bei
 
 ### Train/Test split and baseline
 
-The data is split into a 7:3 train/test ratio. Then, only the basic features created previously for the EDA phase, we create a basic Logistic Regression model and check its performance with a cross-validation score process, just to know where we stand before developing more tuned models. The results were the following:
+The data is split into a 7:3 train/test ratio. Then, only with the basic features created previously for the EDA phase, we create a basic *Logistic Regression* model and check its performance with a cross-validation score process, just to know where we stand before developing more tuned models. The results were the following:
 
 Metric | Score 
 --- | --- 
@@ -118,9 +118,11 @@ First, we split the original dataset (only SMS corpus and spam flag) into the sa
   * Creation of the TF-IDF matrix, preprocessing the text (lowercase, stopwords, etc.) and limiting the number of features to 2500.
   
 2. Standardize the data with the StandardScaler method.
-3. Tune the model hyperparameters with the GridSearchCV method.
+3. The classifier machine learning model.
 
-The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. The results of the whole process were:
+For each model, we run the *GridSearchCV* to find the best hyperparameters avoiding overfitting. 
+
+The machine learning algorithms selected are *Multinomial Naïve Bayes*, *Logistic Regression*, and *Linear SVM*. Mainly, because linear algorithms are very simple to train and the results are interpretable, as you can easily extract the most important coefficients from the model. The results of the whole process were:
 
 Classifier | Accuracy | Precision | Recall | F1 score | Best parameters 
 --- | --- | --- | --- | --- | --- 
